@@ -13,7 +13,7 @@ edit user
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">المستخدمين</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ edit user</span>
+            <h4 class="content-title mb-0 my-auto">users</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ edit user</span>
         </div>
     </div>
 </div>
@@ -89,7 +89,7 @@ edit user
                     <div class="row mg-b-20">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>type user</strong>
+                                <strong>role user</strong>
                                 <select name="roles[]" class="form-control" multiple>
                                 @foreach ($roles as $role => $name)
     <option value="{{ $role }}">{{ $name }}</option>

@@ -36,9 +36,11 @@ class LoginController extends Controller
     protected function sendFailedLoginResponse(Request $request)
     {
         $user = User::where('email', $request->email)->first();
+        // dd($user->toArray());
 
-        if ($user && $user->Status !== 'Activated
-') {
+
+        if ($user && $user->Status !== 'Activated') {
+
             throw ValidationException::withMessages([
                 'email' => ['Your account is currently inactive.'],
             ]);

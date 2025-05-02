@@ -9,7 +9,7 @@ User permissions
 
 @endsection
 @section('page-header')
-<!-- breadcrumb -->
+
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
@@ -18,7 +18,7 @@ User permissions
         </div>
     </div>
 </div>
-<!-- breadcrumb -->
+
 @endsection
 @section('content')
 

@@ -8,10 +8,12 @@ use App\Http\Controllers\BillArchiveController;
 use App\Http\Controllers\ProdactsController;
 use App\Http\Controllers\BillsAttachmentsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Bills_ReportController;
 use App\Http\Controllers\SectionsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CustomersReportController;
 use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
@@ -52,6 +54,12 @@ Route::get('bill_unPaid', [BillController::class, 'bill_unPaid']);
 Route::get('bill_Partial', [BillController::class, 'bill_Partial']);
 Route::resource('Archive', BillArchiveController::class);
 Route::get('Print_bill/{id}', [BillController::class,'Print_bill']);
+Route::get('bills_report', [Bills_ReportController::class, 'index']);
+Route::post('Search_bills', [Bills_ReportController::class, 'Search_bills']);
+
+Route::get('customers_report', [CustomersReportController::class, 'index'])->name("customers_report");
+
+Route::post('Search_customers', [CustomersReportController::class, 'Search_customers']);
 Route::get('/test-email', function () {
     try {
         Mail::raw('اختبار الإرسال عبر Mailtrap', function ($message) {

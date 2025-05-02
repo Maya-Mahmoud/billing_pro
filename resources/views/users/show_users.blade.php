@@ -59,7 +59,7 @@
                                 <th class="wd-15p border-bottom-0">user name</th>
                                 <th class="wd-20p border-bottom-0">Email</th>
                                 <th class="wd-15p border-bottom-0">User status</th>
-                                <th class="wd-15p border-bottom-0">User type</th>
+                                <th class="wd-15p border-bottom-0">User role</th>
                                 <th class="wd-10p border-bottom-0">Operations</th>
                             </tr>
                         </thead>
