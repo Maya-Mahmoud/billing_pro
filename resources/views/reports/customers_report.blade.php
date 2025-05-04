@@ -115,7 +115,7 @@ coustomers_report
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    @if (isset($details))
+                    @if (isset($bills))
                         <table id="example" class="table key-buttons text-md-nowrap" style=" text-align: center">
                             <thead>
                                 <tr>
@@ -136,7 +136,7 @@ coustomers_report
                             </thead>
                             <tbody>
                                 <?php $i = 0; ?>
-                                @foreach ($details as $bill)
+                                @foreach ($bills as $bill)
                                     <?php $i++; ?>
                                     <tr>
                                         <td>{{ $i }}</td>
