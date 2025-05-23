@@ -40,17 +40,21 @@
 						<div class="card overflow-hidden sales-card bg-primary-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
 								<div class="">
-									<h6 class="mb-3 tx-12 text-white">TODAY ORDERS</h6>
+									<h6 class="mb-3 tx-12 text-white">TOTAL BILLS</h6>
 								</div>
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">$5,74.12</h4>
-											<p class="mb-0 tx-12 text-white op-7">Compared to last week</p>
+											<h4 class="tx-20 font-weight-bold mb-1 text-white">
+
+											{{ number_format(\App\models\Bill::sum('Total'), 2) }}
+
+											</h4>
+											<p class="mb-0 tx-12 text-white op-7">number of bills : {{ \App\models\Bill::count() }}</p>
 										</div>
 										<span class="float-right my-auto mr-auto">
 											<i class="fas fa-arrow-circle-up text-white"></i>
-											<span class="text-white op-7"> +427</span>
+											<span class="text-white op-7"> 100%</span>
 										</span>
 									</div>
 								</div>
@@ -62,17 +66,29 @@
 						<div class="card overflow-hidden sales-card bg-danger-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
 								<div class="">
-									<h6 class="mb-3 tx-12 text-white">TODAY EARNINGS</h6>
+									<h6 class="mb-3 tx-12 text-white">UNPAID BILLS</h6>
 								</div>
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">$1,230.17</h4>
-											<p class="mb-0 tx-12 text-white op-7">Compared to last week</p>
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format(\App\models\Bill::where('Value_Status', 2)->sum('Total'), 2) }}</h4>
+											<p class="mb-0 tx-12 text-white op-7">number of unpaid bills : {{ \App\models\Bill::where('Value_Status', 2)->count()}}</p>
 										</div>
 										<span class="float-right my-auto mr-auto">
 											<i class="fas fa-arrow-circle-down text-white"></i>
-											<span class="text-white op-7"> -23.09%</span>
+											<span class="text-white op-7">
+											@php
+                                    $count_all= \App\models\Bill::count();
+                                    $count_bills2 = \App\models\Bill::where('Value_Status', 2)->count();
+
+                                    if($count_bills2 == 0){
+                                       echo $count_bills2 = 0;
+                                    }
+                                    else{
+                                       echo $count_bills2 = $count_bills2 / $count_all *100;
+                                    }
+                                    @endphp
+											</span>
 										</span>
 									</div>
 								</div>
@@ -84,17 +100,29 @@
 						<div class="card overflow-hidden sales-card bg-success-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
 								<div class="">
-									<h6 class="mb-3 tx-12 text-white">TOTAL EARNINGS</h6>
+									<h6 class="mb-3 tx-12 text-white">PAID BILLS</h6>
 								</div>
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">$7,125.70</h4>
-											<p class="mb-0 tx-12 text-white op-7">Compared to last week</p>
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format(\App\models\Bill::where('Value_Status', 1)->sum('Total'), 2) }}</h4>
+											<p class="mb-0 tx-12 text-white op-7">number of paid bills : {{ \App\models\Bill::where('Value_Status', 1)->count()}}</p>
 										</div>
 										<span class="float-right my-auto mr-auto">
 											<i class="fas fa-arrow-circle-up text-white"></i>
-											<span class="text-white op-7"> 52.09%</span>
+											<span class="text-white op-7"> 
+											@php
+                                        $count_all= \App\models\Bill::count();
+                                        $count_bills1 = \App\models\Bill::where('Value_Status', 1)->count();
+
+                                        if($count_bills1 == 0){
+                                           echo $count_bills1 = 0;
+                                        }
+                                        else{
+                                           echo $count_bills1 = $count_bills1 / $count_all *100;
+                                        }
+                                    @endphp
+											</span>
 										</span>
 									</div>
 								</div>
@@ -106,17 +134,29 @@
 						<div class="card overflow-hidden sales-card bg-warning-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
 								<div class="">
-									<h6 class="mb-3 tx-12 text-white">PRODUCT SOLD</h6>
+									<h6 class="mb-3 tx-12 text-white">PARIALLYY PAID BILLS</h6>
 								</div>
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">$4,820.50</h4>
-											<p class="mb-0 tx-12 text-white op-7">Compared to last week</p>
+											<h4 class="tx-20 font-weight-bold mb-1 text-white"> {{ number_format(\App\models\Bill::where('Value_Status', 3)->sum('Total'), 2) }}</h4>
+											<p class="mb-0 tx-12 text-white op-7">number of paid bills : {{ \App\models\Bill::where('Value_Status', 3)->count()}}</p>
 										</div>
 										<span class="float-right my-auto mr-auto">
 											<i class="fas fa-arrow-circle-down text-white"></i>
-											<span class="text-white op-7"> -152.3</span>
+											<span class="text-white op-7"> 
+											@php
+                                        $count_all= \App\models\Bill::count();
+                                        $count_bills1 = \App\models\Bill::where('Value_Status', 1)->count();
+
+                                        if($count_bills1== 0){
+                                            echo $count_bills1 = 0;
+                                        }
+                                        else{
+                                          echo $count_bills1 = $count_bills1 / $count_all *100;
+                                        }
+                                    @endphp
+											</span>
 										</span>
 									</div>
 								</div>

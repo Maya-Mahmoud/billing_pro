@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\bill;
+use App\Models\Bill;
 use Illuminate\Http\Request;
 
 class BillArchiveController extends Controller
@@ -11,7 +11,7 @@ class BillArchiveController extends Controller
      */
     public function index()
     {
-        $bills = bill::onlyTrashed()->get();
+        $bills = Bill::onlyTrashed()->get();
         return view('bills.archive_bills',compact('bills'));
     }
 

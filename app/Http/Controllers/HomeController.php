@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Bill;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
 {
+
+    $count_all =Bill::count();
+
     return view('home'); 
 }
 }
